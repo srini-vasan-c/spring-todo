@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Directory files</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -35,30 +35,18 @@
 				href="<c:url value='/upload'></c:url>">Upload</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value='/logout'></c:url>">Logout</a></li>
-			<li class="nav-item"><c:out value="${sessionScope.user.name }" /></li>
-			<!-- 			<li class="nav-item dropdown"><a -->
-			<!-- 				class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" -->
-			<!-- 				role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a> -->
-			<!-- 				<div class="dropdown-menu"> -->
-			<!-- 					<a class="dropdown-item" href="#one">one</a> <a -->
-			<!-- 						class="dropdown-item" href="#two">two</a> -->
-			<!-- 					<div role="separator" class="dropdown-divider"></div> -->
-			<!-- 					<a class="dropdown-item" href="#three">three</a> -->
-			<!-- 				</div></li> -->
 		</ul>
 	</nav>
 	<br>
 	<div class="container" id="display-content">
-	<c:out value="${sessionScope }" />
-		<c:if test="${page=='add'}">
-			<jsp:include page="add-page.jsp"></jsp:include>
-		</c:if>
-		<c:if test="${page=='view'}">
-			<jsp:include page="view-page.jsp"></jsp:include>
-		</c:if>
-		<c:if test="${page=='upload'}">
-			<jsp:include page="upload-page.jsp"></jsp:include>
-		</c:if>
+		<c:forEach var="par" items="${list}">
+
+			<a href="<c:url value='/files/${par}' />" target="_blank"><c:out value="${par}" /></a>
+			<%-- <c:out value="${par.value}" /> --%>
+			<br>
+
+		</c:forEach>
 	</div>
+
 </body>
 </html>
